@@ -27,6 +27,7 @@ class CustomStack {
       case "8":
       case "9":
       case "0":
+      case ".":
         num1 += item;
         if (customStack.length != 0 &&
             customStack.last != "*" &&
@@ -44,6 +45,9 @@ class CustomStack {
       case "/":
         // operationStack.add(double.parse(num1));
         // operatorStack.add(item);
+        if (customStack.isEmpty) {
+          customStack.add("0");
+        }
         customStack.add(item);
         num1 = "";
 
@@ -242,6 +246,28 @@ class CustomStack {
   }
 
   clear() {
+    result = 0;
+    num1 = "";
     customStack.clear();
+    operationStack.clear();
+    operatorStack.clear();
+    resultStack.clear();
+
+    return result;
+  }
+
+  equalToFunction() {
+    double temp = result;
+    clear();
+    return temp;
+  }
+
+  getCurrentString() {
+    String temp = "";
+    for (i = 0; i < customStack.length; i++) {
+      temp += customStack[i];
+    }
+
+    return temp;
   }
 }

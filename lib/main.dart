@@ -70,6 +70,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
             decoration: BoxDecoration(color: Colors.blue),
             child: Column(
               mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Text(
@@ -80,7 +81,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                   ),
                 ),
                 Text(
-                  object.customStack.toString(),
+                  object.getCurrentString(),
                   style: TextStyle(
                     fontSize: 35.0,
                     color: Colors.white,
@@ -163,6 +164,10 @@ class _CalculatorBodyState extends State<CalculatorBody> {
               if (text == "<-") {
                 object.num1 = "";
                 result = object.pop();
+              } else if (text == "CLEAR") {
+                result = object.clear();
+              } else if (text == "=") {
+                result = object.equalToFunction();
               } else {
                 result = object.push(text);
                 // result = object.getResult();
