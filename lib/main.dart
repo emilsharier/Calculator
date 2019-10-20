@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Calculator'),
+      home: MyHomePage(title: 'Calculator - alpha'),
     );
   }
 }
@@ -76,7 +76,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                 Text(
                   result.toString(),
                   style: TextStyle(
-                    fontSize: 35.0,
+                    fontSize: 45.0,
                     color: Colors.white,
                   ),
                 ),
