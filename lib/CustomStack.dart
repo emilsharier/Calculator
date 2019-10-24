@@ -221,7 +221,14 @@ class CustomStack {
     if (customStack.length == 0) {
       print("Stack is empty!");
     } else {
-      customStack.removeLast();
+      String tempString = customStack.last;
+      if (tempString.length == 1) {
+        customStack.removeLast();
+      } else {
+        tempString = tempString.substring(0, tempString.length - 1);
+        customStack.removeLast();
+        customStack.add(tempString);
+      }
       print("Popped from Stack!");
     }
     _viewCurrentStack();
@@ -231,10 +238,6 @@ class CustomStack {
 
   _viewCurrentStack() {
     print(customStack);
-  }
-
-  double getResult() {
-    return 1;
   }
 
   getNum() {
