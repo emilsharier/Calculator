@@ -1,4 +1,4 @@
-# calculator
+# Calculator
 
 Calculator - Alpha
 
