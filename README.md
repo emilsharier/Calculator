@@ -2,7 +2,11 @@
 
 Calculator - Alpha
 
-## Getting Started
+## Demo
+
+![Calculator demo](demo/calculator.gif)
+
+### Getting Started
 
 V0.1 - Alpha
 This calculator is built using Flutter.
