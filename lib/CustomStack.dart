@@ -43,8 +43,6 @@ class CustomStack {
       case "-":
       case "*":
       case "/":
-        // operationStack.add(double.parse(num1));
-        // operatorStack.add(item);
         if (customStack.isEmpty) {
           customStack.add("0");
         }
