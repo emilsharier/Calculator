@@ -8,6 +8,9 @@ Calculator - Alpha
 
 ### Getting Started
 
+V0.2 - Beta
+Removing boiler code and minimising code strcture. Implementing more abstract ways of performing calculations.
+
 V0.1 - Alpha
 This calculator is built using Flutter.
 The implementation for the calculation is a stack data structure. 
