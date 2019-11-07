@@ -11,6 +11,25 @@ class CalculatorBody extends StatefulWidget {
 class _CalculatorBodyState extends State<CalculatorBody> {
   String num1 = "";
 
+  List<String> contentOfButton = [
+    "1",
+    "2",
+    "3",
+    "+",
+    "4",
+    "5",
+    "6",
+    "-",
+    "7",
+    "8",
+    "9",
+    "*",
+    "<-",
+    "0",
+    ".",
+    "/"
+  ];
+
   String num2 = "";
 
   String op = "";
@@ -68,49 +87,35 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                 children: <Widget>[
                   Expanded(
                     child: Row(
-                      children: <Widget>[
-                        _buildButton("1"),
-                        _buildButton("2"),
-                        _buildButton("3"),
-                        _buildButton("+"),
-                      ],
+                        children: List.generate(4, (index) {
+                      return _buildButton(contentOfButton[index]);
+                    })),
+                  ),
+                  Expanded(
+                    child: Row(
+                      children: List.generate(4, (index) {
+                        return _buildButton(contentOfButton[index + 4]);
+                      }),
                     ),
                   ),
                   Expanded(
                     child: Row(
-                      children: <Widget>[
-                        _buildButton("4"),
-                        _buildButton("5"),
-                        _buildButton("6"),
-                        _buildButton("-"),
-                      ],
+                      children: List.generate(4, (index) {
+                        return _buildButton(contentOfButton[index + 8]);
+                      }),
                     ),
                   ),
                   Expanded(
                     child: Row(
-                      children: <Widget>[
-                        _buildButton("7"),
-                        _buildButton("8"),
-                        _buildButton("9"),
-                        _buildButton("*"),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Row(
-                      children: <Widget>[
-                        _buildButton("<-"),
-                        _buildButton("0"),
-                        _buildButton("."),
-                        _buildButton("/"),
-                      ],
+                      children: List.generate(4, (index) {
+                        return _buildButton(contentOfButton[index + 12]);
+                      }),
                     ),
                   ),
                   Expanded(
                     child: Row(
                       children: <Widget>[
                         _buildButton("CLEAR"),
-                        // Spacer(),
                         _buildButton("=")
                       ],
                     ),
@@ -143,7 +148,6 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                 result = object.equalToFunction();
               } else {
                 result = object.push(text);
-                // result = object.getResult();
               }
             });
           },
