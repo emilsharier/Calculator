@@ -131,8 +131,8 @@ class CustomStk {
   double result = 0;
   int i;
 
-  List<String> operators = ["+", "*", "-", "/"];
-  List<String> numbers =
+  List<String> oprs = ["+", "*", "-", "/"];
+  List<String> nmbrs =
       List.generate(11, (number) => (number == 10) ? "." : number.toString());
 
   List<String> cstStk = [];
@@ -141,13 +141,13 @@ class CustomStk {
   List<double> rstStk = [];
 
   double push(String item) {
-    if (operators.contains(item)) {
+    if (oprs.contains(item)) {
       (cstStk.isEmpty) ? cstStk.add("0") : 0;
       cstStk.add(item);
       num1 = "";
-    } else if (numbers.contains(item)) {
+    } else if (nmbrs.contains(item)) {
       num1 += item;
-      if (cstStk.isNotEmpty && !operators.contains(cstStk.last))
+      if (cstStk.isNotEmpty && !oprs.contains(cstStk.last))
         cstStk.removeLast();
       cstStk.add(num1);
     }
@@ -163,7 +163,7 @@ class CustomStk {
     for (i = 0; i < cstStk.length; i++) {
       currentItem = cstStk[i];
 
-      if (operators.contains(currentItem)) {
+      if (oprs.contains(currentItem)) {
         while (oprStk.isNotEmpty &&
             hasHigherPriority(currentItem, oprStk.last)) {
           opnStk.add(oprStk.last);
@@ -180,7 +180,7 @@ class CustomStk {
     for (i = 0; i < opnStk.length; i++) {
       currentItem = opnStk[i];
 
-      if (operators.contains(currentItem))
+      if (oprs.contains(currentItem))
         doOperation(currentItem);
       else
         rstStk.add(double.parse(currentItem));
@@ -219,7 +219,7 @@ class CustomStk {
     }
   }
 
-  doOperation(String operatorSymbol) {
+  doOperation(String oprsymbol) {
     double num1, num2;
     if (rstStk.length == 1) return rstStk[0];
 
@@ -229,7 +229,7 @@ class CustomStk {
     num2 = rstStk.last;
     rstStk.removeLast();
 
-    switch (operatorSymbol) {
+    switch (oprsymbol) {
       case "+":
         rstStk.add(num1 + num2);
         break;
