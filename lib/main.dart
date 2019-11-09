@@ -38,7 +38,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Calculator - beta"),
+          title: Text("Calculator"),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -248,7 +248,7 @@ class CustomStk {
   }
 
   pop() {
-    if (customStk.length != 0) {
+    if (customStk.isNotEmpty) {
       String tempString = customStk.last;
       if (tempString.length == 1)
         customStk.removeLast();
