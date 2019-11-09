@@ -244,13 +244,13 @@ class CustomStk {
 
   pop() {
     if (cstStk.isNotEmpty) {
-      String tempString = cstStk.last;
-      if (tempString.length == 1)
+      String tmp = cstStk.last;
+      if (tmp.length == 1)
         cstStk.removeLast();
       else {
-        tempString = tempString.substring(0, tempString.length - 1);
+        tmp = tmp.substring(0, tmp.length - 1);
         cstStk.removeLast();
-        cstStk.add(tempString);
+        cstStk.add(tmp);
       }
     }
     return refractor();
