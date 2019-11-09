@@ -38,14 +38,13 @@ class CustomStack {
       case "-":
       case "*":
       case "/":
-        (customStack.isEmpty) ? customStack.add("0") : null;
+        (customStack.isEmpty) ? customStack.add("0") : 0;
 
         customStack.add(item);
         num1 = "";
         break;
     }
-    result = refractor();
-    return result;
+    return refractor();
   }
 
   double refractor() {
@@ -168,16 +167,7 @@ class CustomStack {
     return refractor();
   }
 
-  getNum() {
-    for (int i = 0; i < customStack.length; i++) {
-      num1 += customStack[i];
-    }
-    result = double.parse(num1);
-    customStack.clear();
-  }
-
   clear() {
-    result = 0;
     num1 = "";
     customStack.clear();
     operationStack.clear();
