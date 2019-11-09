@@ -62,7 +62,7 @@ class _CalculatorState extends State<Calculator> {
     if (i != 4)
       return Expanded(
         child: Row(
-            children: List.generate(4, (buttoni) => _buildBtn(buttoni, i * 4))),
+            children: List.generate(4, (j) => _buildBtn(j, i * 4))),
       );
     else
       return Expanded(
