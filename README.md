@@ -6,12 +6,12 @@ Calculator - Beta
 
 ![Calculator demo](demo/calculator.gif)
 
-### Getting Started
+### V0.2 - Beta
 
-V0.2 - Beta
 Removing boiler code and minimising code strcture. Implementing more abstract ways of performing calculations.
 
-V0.1 - Alpha
+### V0.1 - Alpha
+
 This calculator is built using Flutter.
 The implementation for the calculation is a stack data structure. 
 The operation entered is converted from an infix form to a postfix form using Stacks and the result is calculated using the obtained postfix expression.
