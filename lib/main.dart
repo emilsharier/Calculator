@@ -165,22 +165,16 @@ class CustomStack {
     resultStack.clear();
     for (i = 0; i < customStack.length; i++) {
       currentItem = customStack[i];
-      switch (currentItem) {
-        case "+":
-        case "-":
-        case "*":
-        case "/":
-          while (operatorStack.isNotEmpty &&
-              hasHigherPriority(currentItem, operatorStack.last)) {
-            operationStack.add(operatorStack.last);
-            operatorStack.removeLast();
-          }
-          operatorStack.add(currentItem);
-          break;
-        default:
-          operationStack.add(currentItem);
-          break;
-      }
+
+      if (operators.contains(currentItem)) {
+        while (operatorStack.isNotEmpty &&
+            hasHigherPriority(currentItem, operatorStack.last)) {
+          operationStack.add(operatorStack.last);
+          operatorStack.removeLast();
+        }
+        operatorStack.add(currentItem);
+      } else
+        operationStack.add(currentItem);
     }
     while (operatorStack.isNotEmpty) {
       operationStack.add(operatorStack.last);
@@ -189,18 +183,10 @@ class CustomStack {
     for (i = 0; i < operationStack.length; i++) {
       currentItem = operationStack[i];
 
-      switch (currentItem) {
-        case "+":
-        case "-":
-        case "*":
-        case "/":
-          doOperation(currentItem);
-          break;
-
-        default:
-          resultStack.add(double.parse(currentItem));
-          break;
-      }
+      if (operators.contains(currentItem))
+        doOperation(currentItem);
+      else
+        resultStack.add(double.parse(currentItem));
     }
     if (resultStack.length == 0)
       return 0;
