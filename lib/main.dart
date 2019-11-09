@@ -9,7 +9,6 @@ class CalculatorBody extends StatefulWidget {
 }
 
 class _CalculatorBodyState extends State<CalculatorBody> {
-  String num1 = "";
 
   final List<String> contentOfButton = [
     "1",
@@ -31,14 +30,6 @@ class _CalculatorBodyState extends State<CalculatorBody> {
     "AC",
     "=",
   ];
-
-  String num2 = "";
-
-  String op = "";
-
-  int num, temp;
-
-  String calc = "";
 
   double result = 0;
 
@@ -143,7 +134,8 @@ class _CalculatorBodyState extends State<CalculatorBody> {
               } else if (text == "AC") {
                 result = object.clear();
               } else if (text == "=") {
-                result = object.equalToFunction();
+                result = object.result;
+                object.clear();
               } else {
                 result = object.push(text);
               }

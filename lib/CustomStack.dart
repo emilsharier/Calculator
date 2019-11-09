@@ -44,7 +44,8 @@ class CustomStack {
         num1 = "";
         break;
     }
-    return refractor();
+    result = refractor();
+    return result;
   }
 
   double refractor() {
@@ -168,19 +169,13 @@ class CustomStack {
   }
 
   clear() {
+    result = 0;
     num1 = "";
     customStack.clear();
     operationStack.clear();
     operatorStack.clear();
     resultStack.clear();
-
     return result;
-  }
-
-  equalToFunction() {
-    double temp = result;
-    clear();
-    return temp;
   }
 
   getCurrentString() {
