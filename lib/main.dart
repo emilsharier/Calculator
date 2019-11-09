@@ -31,7 +31,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
 
   double result = 0;
 
-  CustomStack object = CustomStack();
+  CustomStk object = CustomStk();
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +129,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
   }
 }
 
-class CustomStack {
+class CustomStk {
   String num1 = "";
   double result = 0;
   int i;
@@ -138,21 +138,21 @@ class CustomStack {
   List<String> numbers =
       List.generate(11, (number) => (number == 10) ? "." : number.toString());
 
-  List<String> customStack = [];
-  List<String> operationStack = [];
-  List<String> operatorStack = [];
-  List<double> resultStack = [];
+  List<String> customStk = [];
+  List<String> operationStk = [];
+  List<String> operatorStk = [];
+  List<double> resultStk = [];
 
   double push(String item) {
     if (operators.contains(item)) {
-      (customStack.isEmpty) ? customStack.add("0") : 0;
-      customStack.add(item);
+      (customStk.isEmpty) ? customStk.add("0") : 0;
+      customStk.add(item);
       num1 = "";
     } else if (numbers.contains(item)) {
       num1 += item;
-      if (customStack.isNotEmpty && !operators.contains(customStack.last))
-        customStack.removeLast();
-      customStack.add(num1);
+      if (customStk.isNotEmpty && !operators.contains(customStk.last))
+        customStk.removeLast();
+      customStk.add(num1);
     }
     result = refractor();
     return result;
@@ -160,47 +160,47 @@ class CustomStack {
 
   double refractor() {
     String currentItem = "";
-    operatorStack.clear();
-    operationStack.clear();
-    resultStack.clear();
-    for (i = 0; i < customStack.length; i++) {
-      currentItem = customStack[i];
+    operatorStk.clear();
+    operationStk.clear();
+    resultStk.clear();
+    for (i = 0; i < customStk.length; i++) {
+      currentItem = customStk[i];
 
       if (operators.contains(currentItem)) {
-        while (operatorStack.isNotEmpty &&
-            hasHigherPriority(currentItem, operatorStack.last)) {
-          operationStack.add(operatorStack.last);
-          operatorStack.removeLast();
+        while (operatorStk.isNotEmpty &&
+            hasHigherPriority(currentItem, operatorStk.last)) {
+          operationStk.add(operatorStk.last);
+          operatorStk.removeLast();
         }
-        operatorStack.add(currentItem);
+        operatorStk.add(currentItem);
       } else
-        operationStack.add(currentItem);
+        operationStk.add(currentItem);
     }
-    while (operatorStack.isNotEmpty) {
-      operationStack.add(operatorStack.last);
-      operatorStack.removeLast();
+    while (operatorStk.isNotEmpty) {
+      operationStk.add(operatorStk.last);
+      operatorStk.removeLast();
     }
-    for (i = 0; i < operationStack.length; i++) {
-      currentItem = operationStack[i];
+    for (i = 0; i < operationStk.length; i++) {
+      currentItem = operationStk[i];
 
       if (operators.contains(currentItem))
         doOperation(currentItem);
       else
-        resultStack.add(double.parse(currentItem));
+        resultStk.add(double.parse(currentItem));
     }
-    if (resultStack.length == 0)
+    if (resultStk.length == 0)
       return 0;
     else
-      return resultStack[0];
+      return resultStk[0];
   }
 
-  bool hasHigherPriority(String item, String topOfStack) {
+  bool hasHigherPriority(String item, String topOfStk) {
     int currentPriority = getPriority(item);
-    int topOfStackPriority = getPriority(topOfStack);
+    int topOfStkPriority = getPriority(topOfStk);
 
-    if (item == topOfStack) return false;
+    if (item == topOfStk) return false;
 
-    if (topOfStackPriority >= currentPriority)
+    if (topOfStkPriority >= currentPriority)
       return true;
     else
       return false;
@@ -224,26 +224,26 @@ class CustomStack {
 
   doOperation(String operatorSymbol) {
     double num1, num2;
-    if (resultStack.length == 1) return resultStack[0];
+    if (resultStk.length == 1) return resultStk[0];
 
-    num1 = resultStack.last;
-    resultStack.removeLast();
+    num1 = resultStk.last;
+    resultStk.removeLast();
 
-    num2 = resultStack.last;
-    resultStack.removeLast();
+    num2 = resultStk.last;
+    resultStk.removeLast();
 
     switch (operatorSymbol) {
       case "+":
-        resultStack.add(num1 + num2);
+        resultStk.add(num1 + num2);
         break;
       case "-":
-        resultStack.add(num2 - num1);
+        resultStk.add(num2 - num1);
         break;
       case "*":
-        resultStack.add(num1 * num2);
+        resultStk.add(num1 * num2);
         break;
       case "/":
-        resultStack.add(num2 / num1);
+        resultStk.add(num2 / num1);
         break;
       default:
         break;
@@ -251,14 +251,14 @@ class CustomStack {
   }
 
   pop() {
-    if (customStack.length != 0) {
-      String tempString = customStack.last;
+    if (customStk.length != 0) {
+      String tempString = customStk.last;
       if (tempString.length == 1)
-        customStack.removeLast();
+        customStk.removeLast();
       else {
         tempString = tempString.substring(0, tempString.length - 1);
-        customStack.removeLast();
-        customStack.add(tempString);
+        customStk.removeLast();
+        customStk.add(tempString);
       }
     }
     return refractor();
@@ -267,16 +267,16 @@ class CustomStack {
   clear() {
     result = 0;
     num1 = "";
-    customStack.clear();
-    operationStack.clear();
-    operatorStack.clear();
-    resultStack.clear();
+    customStk.clear();
+    operationStk.clear();
+    operatorStk.clear();
+    resultStk.clear();
     return result;
   }
 
   getCurrentString() {
     String temp = "";
-    for (i = 0; i < customStack.length; i++) temp += customStack[i];
+    for (i = 0; i < customStk.length; i++) temp += customStk[i];
     return temp;
   }
 }
