@@ -75,8 +75,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
             Container(
               height: 300.0,
               child: Column(
-                children: List.generate(5, (index) => _buildRows(index))
-              ),
+                  children: List.generate(5, (index) => _buildRows(index))),
             ),
           ],
         ),
@@ -116,14 +115,13 @@ class _CalculatorBodyState extends State<CalculatorBody> {
               if (text == "C") {
                 object.num1 = "";
                 result = object.pop();
-              } else if (text == "AC") {
+              } else if (text == "AC")
                 result = object.clear();
-              } else if (text == "=") {
+              else if (text == "=") {
                 result = object.result;
                 object.clear();
-              } else {
+              } else
                 result = object.push(text);
-              }
             });
           },
         ),
