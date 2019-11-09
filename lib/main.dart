@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(CalculatorBody());
+void main() => runApp(Calculator());
 
-class CalculatorBody extends StatefulWidget {
+class Calculator extends StatefulWidget {
   @override
-  _CalculatorBodyState createState() => _CalculatorBodyState();
+  _CalculatorState createState() => _CalculatorState();
 }
 
-class _CalculatorBodyState extends State<CalculatorBody> {
+class _CalculatorState extends State<Calculator> {
   final List<String> content = [
     "1",
     "2",
@@ -61,7 +61,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                       ),
                     ),
                     Text(
-                      object.getCurrentString(),
+                      object.getExpr(),
                       style: TextStyle(
                         fontSize: 30.0,
                         color: Colors.grey,
@@ -87,17 +87,17 @@ class _CalculatorBodyState extends State<CalculatorBody> {
       return Expanded(
         child: Row(
             children: List.generate(
-                4, (buttonIndex) => _buildButton(buttonIndex, index * 4))),
+                4, (buttonIndex) => _buildBtn(buttonIndex, index * 4))),
       );
     else
       return Expanded(
         child: Row(
-          children: List.generate(2, (index) => _buildButton(16, index))
+          children: List.generate(2, (index) => _buildBtn(16, index))
         ),
       );
   }
 
-  _buildButton(int index, int count) {
+  _buildBtn(int index, int count) {
     String text = content[index + count];
     return Expanded(
       child: SizedBox.expand(
@@ -271,7 +271,7 @@ class CustomStk {
     return result;
   }
 
-  getCurrentString() {
+  getExpr() {
     String temp = "";
     for (i = 0; i < cstStk.length; i++) temp += cstStk[i];
     return temp;
