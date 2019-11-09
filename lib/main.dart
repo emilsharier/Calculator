@@ -31,7 +31,7 @@ class _CalculatorState extends State<Calculator> {
 
   double result = 0;
 
-  CustomStk object = CustomStk();
+  CustomStk obj = CustomStk();
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class _CalculatorState extends State<Calculator> {
                       ),
                     ),
                     Text(
-                      object.getExpr(),
+                      obj.getExpr(),
                       style: TextStyle(
                         fontSize: 30.0,
                         color: Colors.grey,
@@ -107,16 +107,16 @@ class _CalculatorState extends State<Calculator> {
           onPressed: () {
             setState(() {
               if (text == "C") {
-                object.num1 = "";
-                result = object.pop();
+                obj.num1 = "";
+                result = obj.pop();
               } else if (text == "AC")
-                result = object.clear();
+                result = obj.clear();
               else if (text == "=") {
-                result = object.result;
-                object.clear();
-                object.cstStk.add(result.toString());
+                result = obj.result;
+                obj.clear();
+                obj.cstStk.add(result.toString());
               } else
-                result = object.push(text);
+                result = obj.push(text);
             });
           },
         ),
