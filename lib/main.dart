@@ -11,7 +11,7 @@ class CalculatorBody extends StatefulWidget {
 class _CalculatorBodyState extends State<CalculatorBody> {
   String num1 = "";
 
-  List<String> contentOfButton = [
+  final List<String> contentOfButton = [
     "1",
     "2",
     "3",

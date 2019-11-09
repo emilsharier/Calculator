@@ -97,17 +97,10 @@ class CustomStack {
 
       switch (currentItem) {
         case "+":
-          addNumbers();
-          break;
         case "-":
-          subtractNumbers();
-          break;
         case "*":
-          multiplyNumbers();
-          break;
         case "/":
-          divideNumbers();
-          break;
+          doOperation(currentItem);
           break;
 
         default:
@@ -159,7 +152,7 @@ class CustomStack {
     }
   }
 
-  addNumbers() {
+  doOperation(String operatorSymbol) {
     double num1, num2;
     if (resultStack.length == 1) {
       return resultStack[0];
@@ -170,49 +163,23 @@ class CustomStack {
     num2 = resultStack.last;
     resultStack.removeLast();
 
-    resultStack.add(num1 + num2);
-  }
+    switch (operatorSymbol) {
+      case "+":
+        resultStack.add(num1 + num2);
+        break;
+      case "-":
+        resultStack.add(num2 - num1);
+        break;
+      case "*":
+        resultStack.add(num1 * num2);
+        break;
+      case "/":
+        resultStack.add(num2 / num1);
+        break;
 
-  subtractNumbers() {
-    double num1, num2;
-    if (resultStack.length == 1) {
-      return resultStack[0];
+      default:
+        break;
     }
-    num1 = resultStack.last;
-    resultStack.removeLast();
-
-    num2 = resultStack.last;
-    resultStack.removeLast();
-
-    resultStack.add(num2 - num1);
-  }
-
-  multiplyNumbers() {
-    double num1, num2;
-    if (resultStack.length == 1) {
-      return resultStack[0];
-    }
-    num1 = resultStack.last;
-    resultStack.removeLast();
-
-    num2 = resultStack.last;
-    resultStack.removeLast();
-
-    resultStack.add(num1 * num2);
-  }
-
-  divideNumbers() {
-    double num1, num2;
-    if (resultStack.length == 1) {
-      return resultStack[0];
-    }
-    num1 = resultStack.last;
-    resultStack.removeLast();
-
-    num2 = resultStack.last;
-    resultStack.removeLast();
-
-    resultStack.add(num2 / num1);
   }
 
   pop() {
