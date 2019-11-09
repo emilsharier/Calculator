@@ -33,7 +33,7 @@ class _CalculatorState extends State<Calculator> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     _buildText(result.toString(), 45.0, Colors.white),
-                    _buildText(obj.getExpr(), 30.0, Colors.white24),
+                    _buildText(obj.getExpr(), 30.0, Colors.white54),
                   ],
                 ),
               ),
@@ -74,7 +74,7 @@ class _CalculatorState extends State<Calculator> {
     String text = content[i + count];
     return Expanded(
       child: SizedBox.expand(
-        child: OutlineButton(
+        child: FlatButton(
           child: _buildText(text, 27.0, Colors.blueGrey),
           onPressed: () {
             setState(() {
@@ -118,11 +118,11 @@ class CustomStk {
       if (cstStk.isNotEmpty && !oprs.contains(cstStk.last)) cstStk.removeLast();
       cstStk.add(num1);
     }
-    result = refractor();
+    result = recalc();
     return result;
   }
 
-  double refractor() {
+  double recalc() {
     String item = "";
     oprStk.clear();
     opnStk.clear();
@@ -189,7 +189,7 @@ class CustomStk {
         cstStk.add(tmp);
       }
     }
-    return refractor();
+    return recalc();
   }
 
   clear() {
