@@ -161,19 +161,8 @@ class CustomStk {
   }
 
   int getP(item) {
-    switch (item) {
-      case "*":
-      case "/":
-        return 2;
-        break;
-      case "+":
-      case "-":
-        return 1;
-        break;
-      default:
-        return -1;
-        break;
-    }
+    if (item == "*" || item == "/") return 2;
+    else return 1;
   }
 
   doOperation(oprsymbol) {
