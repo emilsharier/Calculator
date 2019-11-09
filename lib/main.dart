@@ -8,7 +8,7 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  final List<String> content = [
+  final List content = [
     "1",
     "2",
     "3",
@@ -97,7 +97,7 @@ class _CalculatorState extends State<Calculator> {
       );
   }
 
-  _buildBtn(int index, int count) {
+  _buildBtn(index, count) {
     String text = content[index + count];
     return Expanded(
       child: SizedBox.expand(
@@ -131,16 +131,16 @@ class CustomStk {
   double result = 0;
   int i;
 
-  List<String> oprs = ["+", "*", "-", "/"];
-  List<String> nmbrs =
+  List oprs = ["+", "*", "-", "/"];
+  List nmbrs =
       List.generate(11, (number) => (number == 10) ? "." : number.toString());
 
-  List<String> cstStk = [];
-  List<String> opnStk = [];
-  List<String> oprStk = [];
+  List cstStk = [];
+  List opnStk = [];
+  List oprStk = [];
   List<double> rstStk = [];
 
-  double push(String item) {
+  double push(item) {
     if (oprs.contains(item)) {
       (cstStk.isEmpty) ? cstStk.add("0") : 0;
       cstStk.add(item);
@@ -191,7 +191,7 @@ class CustomStk {
       return rstStk[0];
   }
 
-  bool highP(String item, String topOfStk) {
+  bool highP(item, topOfStk) {
     int currentP = getP(item);
     int tosP = getP(topOfStk);
 
@@ -219,7 +219,7 @@ class CustomStk {
     }
   }
 
-  doOperation(String oprsymbol) {
+  doOperation(oprsymbol) {
     double num1, num2;
     if (rstStk.length == 1) return rstStk[0];
 
