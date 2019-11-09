@@ -165,7 +165,7 @@ class CustomStk {
 
       if (oprs.contains(currentItem)) {
         while (oprStk.isNotEmpty &&
-            hasHigherPriority(currentItem, oprStk.last)) {
+            highP(currentItem, oprStk.last)) {
           opnStk.add(oprStk.last);
           oprStk.removeLast();
         }
@@ -191,19 +191,19 @@ class CustomStk {
       return rstStk[0];
   }
 
-  bool hasHigherPriority(String item, String topOfStk) {
-    int currentPriority = getPriority(item);
-    int topOfStkPriority = getPriority(topOfStk);
+  bool highP(String item, String topOfStk) {
+    int currentP = getP(item);
+    int tosP = getP(topOfStk);
 
     if (item == topOfStk) return false;
 
-    if (topOfStkPriority >= currentPriority)
+    if (tosP >= currentP)
       return true;
     else
       return false;
   }
 
-  int getPriority(item) {
+  int getP(item) {
     switch (item) {
       case "*":
       case "/":
