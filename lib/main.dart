@@ -55,7 +55,6 @@ class _CalculatorBodyState extends State<CalculatorBody> {
           children: <Widget>[
             Expanded(
               child: Container(
-                // height: 350,
                 alignment: Alignment.bottomRight,
                 decoration: BoxDecoration(color: Colors.blue),
                 child: Column(

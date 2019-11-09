@@ -43,12 +43,13 @@ class CustomStack {
       case "-":
       case "*":
       case "/":
-        if (customStack.isEmpty) {
-          customStack.add("0");
-        }
+
+      (customStack.isEmpty) ? customStack.add("0") : null;
+        // if (customStack.isEmpty) {
+        //   customStack.add("0");
+        // }
         customStack.add(item);
         num1 = "";
-
         break;
     }
     result = refractor();
@@ -79,7 +80,6 @@ class CustomStack {
           break;
       }
     }
-    print(operatorStack);
     while (operatorStack.isNotEmpty) {
       operationStack.add(operatorStack.last);
       operatorStack.removeLast();
@@ -100,10 +100,6 @@ class CustomStack {
           break;
       }
     }
-    print("\n");
-
-    print("The result stack is .... ");
-    print(resultStack);
     if (resultStack.length == 0) {
       return 0;
     } else {
