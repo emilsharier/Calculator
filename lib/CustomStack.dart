@@ -157,9 +157,9 @@ class CustomStack {
   pop() {
     if (customStack.length != 0) {
       String tempString = customStack.last;
-      if (tempString.length == 1) {
+      if (tempString.length == 1)
         customStack.removeLast();
-      } else {
+      else {
         tempString = tempString.substring(0, tempString.length - 1);
         customStack.removeLast();
         customStack.add(tempString);
@@ -180,9 +180,7 @@ class CustomStack {
 
   getCurrentString() {
     String temp = "";
-    for (i = 0; i < customStack.length; i++) {
-      temp += customStack[i];
-    }
+    for (i = 0; i < customStack.length; i++) temp += customStack[i];
     return temp;
   }
 }

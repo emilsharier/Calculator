@@ -44,7 +44,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
+          children: [
             Expanded(
               child: Container(
                 alignment: Alignment.bottomRight,
@@ -53,7 +53,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
+                  children: [
                     Text(
                       result.toString(),
                       style: TextStyle(
