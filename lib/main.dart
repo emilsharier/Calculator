@@ -73,8 +73,7 @@ class _CalculatorState extends State<Calculator> {
             ),
             Container(
               height: 300.0,
-              child: Column(
-                  children: List.generate(5, (index) => _buildRows(index))),
+              child: Column(children: List.generate(5, (i) => _buildRows(i))),
             ),
           ],
         ),
@@ -82,21 +81,20 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 
-  _buildRows(index) {
-    if (index != 4)
+  _buildRows(i) {
+    if (i != 4)
       return Expanded(
         child: Row(
-            children: List.generate(
-                4, (buttonIndex) => _buildBtn(buttonIndex, index * 4))),
+            children: List.generate(4, (buttoni) => _buildBtn(buttoni, i * 4))),
       );
     else
       return Expanded(
-        child: Row(children: List.generate(2, (index) => _buildBtn(16, index))),
+        child: Row(children: List.generate(2, (i) => _buildBtn(16, i))),
       );
   }
 
-  _buildBtn(index, count) {
-    String text = content[index + count];
+  _buildBtn(i, count) {
+    String text = content[i + count];
     return Expanded(
       child: SizedBox.expand(
         child: OutlineButton(
