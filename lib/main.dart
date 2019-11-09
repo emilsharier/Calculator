@@ -9,7 +9,6 @@ class CalculatorBody extends StatefulWidget {
 }
 
 class _CalculatorBodyState extends State<CalculatorBody> {
-
   final List<String> contentOfButton = [
     "1",
     "2",
@@ -76,45 +75,31 @@ class _CalculatorBodyState extends State<CalculatorBody> {
             Container(
               height: 300.0,
               child: Column(
-                children: <Widget>[
-                  Expanded(
-                    child: Row(
-                        children: List.generate(
-                            4, (index) => _buildButton(index, 0))),
-                  ),
-                  Expanded(
-                    child: Row(
-                      children:
-                          List.generate(4, (index) => _buildButton(index, 4)),
-                    ),
-                  ),
-                  Expanded(
-                    child: Row(
-                      children:
-                          List.generate(4, (index) => _buildButton(index, 8)),
-                    ),
-                  ),
-                  Expanded(
-                    child: Row(
-                      children:
-                          List.generate(4, (index) => _buildButton(index, 12)),
-                    ),
-                  ),
-                  Expanded(
-                    child: Row(
-                      children: <Widget>[
-                        _buildButton(16, 0),
-                        _buildButton(17, 0)
-                      ],
-                    ),
-                  )
-                ],
+                children: List.generate(5, (index) => _buildRows(index))
               ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  _buildRows(index) {
+    if (index != 4)
+      return Expanded(
+        child: Row(
+            children: List.generate(
+                4, (buttonIndex) => _buildButton(buttonIndex, index * 4))),
+      );
+    else
+      return Expanded(
+        child: Row(
+          children: [
+            _buildButton(16, 0),
+            _buildButton(17, 0),
+          ],
+        ),
+      );
   }
 
   _buildButton(int index, int count) {
