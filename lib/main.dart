@@ -80,8 +80,10 @@ class _CalculatorState extends State<Calculator> {
               if (text == "C") {
                 obj.num1 = "";
                 result = obj.pop();
-              } else if (text == "AC")
-                result = obj.clear();
+              } else if (text == "AC"){
+                obj.clear();
+                result = 0.0;
+              }
               else if (text == "=") {
                 result = obj.result;
                 obj.clear();
@@ -192,13 +194,13 @@ class CustomStk {
   }
 
   clear() {
-    result = 0;
+    if(rstStk.isNotEmpty) result = rstStk[0];
     num1 = "";
     cstStk.clear();
     opnStk.clear();
     oprStk.clear();
     rstStk.clear();
-    return 0.0;
+    return result;
   }
 
   getExpr() {
