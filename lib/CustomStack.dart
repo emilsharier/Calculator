@@ -176,7 +176,6 @@ class CustomStack {
       case "/":
         resultStack.add(num2 / num1);
         break;
-
       default:
         break;
     }

@@ -1,6 +1,6 @@
 # Calculator
 
-Calculator - Alpha
+Calculator - Beta
 
 ## Demo
 
