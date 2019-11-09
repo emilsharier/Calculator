@@ -135,21 +135,21 @@ class CustomStk {
   List<String> numbers =
       List.generate(11, (number) => (number == 10) ? "." : number.toString());
 
-  List<String> customStk = [];
-  List<String> operationStk = [];
-  List<String> operatorStk = [];
-  List<double> resultStk = [];
+  List<String> cstStk = [];
+  List<String> opnStk = [];
+  List<String> oprStk = [];
+  List<double> rstStk = [];
 
   double push(String item) {
     if (operators.contains(item)) {
-      (customStk.isEmpty) ? customStk.add("0") : 0;
-      customStk.add(item);
+      (cstStk.isEmpty) ? cstStk.add("0") : 0;
+      cstStk.add(item);
       num1 = "";
     } else if (numbers.contains(item)) {
       num1 += item;
-      if (customStk.isNotEmpty && !operators.contains(customStk.last))
-        customStk.removeLast();
-      customStk.add(num1);
+      if (cstStk.isNotEmpty && !operators.contains(cstStk.last))
+        cstStk.removeLast();
+      cstStk.add(num1);
     }
     result = refractor();
     return result;
@@ -157,38 +157,38 @@ class CustomStk {
 
   double refractor() {
     String currentItem = "";
-    operatorStk.clear();
-    operationStk.clear();
-    resultStk.clear();
-    for (i = 0; i < customStk.length; i++) {
-      currentItem = customStk[i];
+    oprStk.clear();
+    opnStk.clear();
+    rstStk.clear();
+    for (i = 0; i < cstStk.length; i++) {
+      currentItem = cstStk[i];
 
       if (operators.contains(currentItem)) {
-        while (operatorStk.isNotEmpty &&
-            hasHigherPriority(currentItem, operatorStk.last)) {
-          operationStk.add(operatorStk.last);
-          operatorStk.removeLast();
+        while (oprStk.isNotEmpty &&
+            hasHigherPriority(currentItem, oprStk.last)) {
+          opnStk.add(oprStk.last);
+          oprStk.removeLast();
         }
-        operatorStk.add(currentItem);
+        oprStk.add(currentItem);
       } else
-        operationStk.add(currentItem);
+        opnStk.add(currentItem);
     }
-    while (operatorStk.isNotEmpty) {
-      operationStk.add(operatorStk.last);
-      operatorStk.removeLast();
+    while (oprStk.isNotEmpty) {
+      opnStk.add(oprStk.last);
+      oprStk.removeLast();
     }
-    for (i = 0; i < operationStk.length; i++) {
-      currentItem = operationStk[i];
+    for (i = 0; i < opnStk.length; i++) {
+      currentItem = opnStk[i];
 
       if (operators.contains(currentItem))
         doOperation(currentItem);
       else
-        resultStk.add(double.parse(currentItem));
+        rstStk.add(double.parse(currentItem));
     }
-    if (resultStk.length == 0)
+    if (rstStk.length == 0)
       return 0;
     else
-      return resultStk[0];
+      return rstStk[0];
   }
 
   bool hasHigherPriority(String item, String topOfStk) {
@@ -221,26 +221,26 @@ class CustomStk {
 
   doOperation(String operatorSymbol) {
     double num1, num2;
-    if (resultStk.length == 1) return resultStk[0];
+    if (rstStk.length == 1) return rstStk[0];
 
-    num1 = resultStk.last;
-    resultStk.removeLast();
+    num1 = rstStk.last;
+    rstStk.removeLast();
 
-    num2 = resultStk.last;
-    resultStk.removeLast();
+    num2 = rstStk.last;
+    rstStk.removeLast();
 
     switch (operatorSymbol) {
       case "+":
-        resultStk.add(num1 + num2);
+        rstStk.add(num1 + num2);
         break;
       case "-":
-        resultStk.add(num2 - num1);
+        rstStk.add(num2 - num1);
         break;
       case "*":
-        resultStk.add(num1 * num2);
+        rstStk.add(num1 * num2);
         break;
       case "/":
-        resultStk.add(num2 / num1);
+        rstStk.add(num2 / num1);
         break;
       default:
         break;
@@ -248,14 +248,14 @@ class CustomStk {
   }
 
   pop() {
-    if (customStk.isNotEmpty) {
-      String tempString = customStk.last;
+    if (cstStk.isNotEmpty) {
+      String tempString = cstStk.last;
       if (tempString.length == 1)
-        customStk.removeLast();
+        cstStk.removeLast();
       else {
         tempString = tempString.substring(0, tempString.length - 1);
-        customStk.removeLast();
-        customStk.add(tempString);
+        cstStk.removeLast();
+        cstStk.add(tempString);
       }
     }
     return refractor();
@@ -264,16 +264,16 @@ class CustomStk {
   clear() {
     result = 0;
     num1 = "";
-    customStk.clear();
-    operationStk.clear();
-    operatorStk.clear();
-    resultStk.clear();
+    cstStk.clear();
+    opnStk.clear();
+    oprStk.clear();
+    rstStk.clear();
     return result;
   }
 
   getCurrentString() {
     String temp = "";
-    for (i = 0; i < customStk.length; i++) temp += customStk[i];
+    for (i = 0; i < cstStk.length; i++) temp += cstStk[i];
     return temp;
   }
 }
