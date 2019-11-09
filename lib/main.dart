@@ -29,7 +29,6 @@ class _CalculatorState extends State<Calculator> {
                 decoration: BoxDecoration(color: Colors.blue),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     _buildText(result.toString(), 45.0, Colors.white),
