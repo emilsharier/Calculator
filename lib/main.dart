@@ -74,8 +74,8 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                     Text(
                       object.getCurrentString(),
                       style: TextStyle(
-                        fontSize: 35.0,
-                        color: Colors.white,
+                        fontSize: 30.0,
+                        color: Colors.grey,
                       ),
                     ),
                   ],

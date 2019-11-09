@@ -43,11 +43,8 @@ class CustomStack {
       case "-":
       case "*":
       case "/":
+        (customStack.isEmpty) ? customStack.add("0") : null;
 
-      (customStack.isEmpty) ? customStack.add("0") : null;
-        // if (customStack.isEmpty) {
-        //   customStack.add("0");
-        // }
         customStack.add(item);
         num1 = "";
         break;
@@ -100,28 +97,22 @@ class CustomStack {
           break;
       }
     }
-    if (resultStack.length == 0) {
+    if (resultStack.length == 0)
       return 0;
-    } else {
+    else
       return resultStack[0];
-    }
   }
 
   bool hasHigherPriority(String item, String topOfStack) {
-    int currentPriority = -1;
-    int topOfStackPriority = -1;
+    int currentPriority = getPriority(item);
+    int topOfStackPriority = getPriority(topOfStack);
 
-    if (item == topOfStack) {
-      return false;
-    }
-    currentPriority = getPriority(item);
-    topOfStackPriority = getPriority(topOfStack);
+    if (item == topOfStack) return false;
 
-    if (topOfStackPriority >= currentPriority) {
+    if (topOfStackPriority >= currentPriority)
       return true;
-    } else {
+    else
       return false;
-    }
   }
 
   int getPriority(item) {
@@ -182,7 +173,6 @@ class CustomStack {
     }
     return refractor();
   }
-
 
   getNum() {
     for (int i = 0; i < customStack.length; i++) {
