@@ -8,12 +8,8 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  final List content = [
-    "1","2","3","+","4","5","6","-","7","8","9","*","C","0",".","/","AC","=",
-  ];
-
+  final List content = ["1","2","3","+","4","5","6","-","7","8","9","*","C","0",".","/","AC","="];
   double result = 0;
-
   CustomStk obj = CustomStk();
 
   @override
@@ -110,11 +106,8 @@ class CustomStk {
   String num1 = "";
   double result = 0;
   int i;
-
   List oprs = ["+", "*", "-", "/"];
-  List nmbrs =
-      List.generate(11, (number) => (number == 10) ? "." : number.toString());
-
+  List nmbrs = List.generate(11, (number) => (number == 10) ? "." : number.toString());
   List cstStk = [];
   List opnStk = [];
   List oprStk = [];
@@ -141,7 +134,6 @@ class CustomStk {
     rstStk.clear();
     for (i = 0; i < cstStk.length; i++) {
       item = cstStk[i];
-
       if (oprs.contains(item)) {
         while (oprStk.isNotEmpty && highP(item, oprStk.last)) {
           opnStk.add(oprStk.last);
@@ -157,7 +149,6 @@ class CustomStk {
     }
     for (i = 0; i < opnStk.length; i++) {
       item = opnStk[i];
-
       if (oprs.contains(item))
         doOperation(item);
       else
@@ -174,11 +165,8 @@ class CustomStk {
     int tosP = getP(topOfStk);
 
     if (item == topOfStk) return false;
-
-    if (tosP >= currentP)
-      return true;
-    else
-      return false;
+    if (tosP >= currentP) return true;
+    else return false;
   }
 
   int getP(item) {
@@ -199,14 +187,12 @@ class CustomStk {
 
   doOperation(oprsymbol) {
     double num1, num2;
-    if (rstStk.length == 1) return rstStk[0];
 
+    if (rstStk.length == 1) return rstStk[0];
     num1 = rstStk.last;
     rstStk.removeLast();
-
     num2 = rstStk.last;
     rstStk.removeLast();
-
     switch (oprsymbol) {
       case "+":
         rstStk.add(num1 + num2);
@@ -228,8 +214,7 @@ class CustomStk {
   pop() {
     if (cstStk.isNotEmpty) {
       String tmp = cstStk.last;
-      if (tmp.length == 1)
-        cstStk.removeLast();
+      if (tmp.length == 1) cstStk.removeLast();
       else {
         tmp = tmp.substring(0, tmp.length - 1);
         cstStk.removeLast();
