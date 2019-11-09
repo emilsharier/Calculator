@@ -91,9 +91,7 @@ class _CalculatorState extends State<Calculator> {
       );
     else
       return Expanded(
-        child: Row(
-          children: List.generate(2, (index) => _buildBtn(16, index))
-        ),
+        child: Row(children: List.generate(2, (index) => _buildBtn(16, index))),
       );
   }
 
@@ -116,6 +114,7 @@ class _CalculatorState extends State<Calculator> {
               else if (text == "=") {
                 result = object.result;
                 object.clear();
+                object.cstStk.add(result.toString());
               } else
                 result = object.push(text);
             });
@@ -147,8 +146,7 @@ class CustomStk {
       num1 = "";
     } else if (nmbrs.contains(item)) {
       num1 += item;
-      if (cstStk.isNotEmpty && !oprs.contains(cstStk.last))
-        cstStk.removeLast();
+      if (cstStk.isNotEmpty && !oprs.contains(cstStk.last)) cstStk.removeLast();
       cstStk.add(num1);
     }
     result = refractor();
@@ -164,8 +162,7 @@ class CustomStk {
       currentItem = cstStk[i];
 
       if (oprs.contains(currentItem)) {
-        while (oprStk.isNotEmpty &&
-            highP(currentItem, oprStk.last)) {
+        while (oprStk.isNotEmpty && highP(currentItem, oprStk.last)) {
           opnStk.add(oprStk.last);
           oprStk.removeLast();
         }
@@ -268,7 +265,7 @@ class CustomStk {
     opnStk.clear();
     oprStk.clear();
     rstStk.clear();
-    return result;
+    return 0.0;
   }
 
   getExpr() {
