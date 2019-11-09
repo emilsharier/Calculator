@@ -1,12 +1,7 @@
 class CustomStack {
   String num1 = "";
-  String symbol;
-  String tempValue = "";
-
   double result = 0;
-  double temp = 0;
   int i;
-  int pos = 0;
 
   List<String> operators = ["+", "*", "-", "/"];
 
@@ -133,9 +128,8 @@ class CustomStack {
 
   doOperation(String operatorSymbol) {
     double num1, num2;
-    if (resultStack.length == 1) {
-      return resultStack[0];
-    }
+    if (resultStack.length == 1) return resultStack[0];
+
     num1 = resultStack.last;
     resultStack.removeLast();
 
