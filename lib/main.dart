@@ -8,7 +8,7 @@ class CalculatorBody extends StatefulWidget {
 }
 
 class _CalculatorBodyState extends State<CalculatorBody> {
-  final List<String> contentOfButton = [
+  final List<String> content = [
     "1",
     "2",
     "3",
@@ -98,7 +98,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
   }
 
   _buildButton(int index, int count) {
-    String text = contentOfButton[index + count];
+    String text = content[index + count];
     return Expanded(
       child: SizedBox.expand(
         child: OutlineButton(
