@@ -92,10 +92,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
     else
       return Expanded(
         child: Row(
-          children: [
-            _buildButton(16, 0),
-            _buildButton(17, 0),
-          ],
+          children: List.generate(2, (index) => _buildButton(16, index))
         ),
       );
   }
