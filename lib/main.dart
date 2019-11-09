@@ -154,33 +154,33 @@ class CustomStk {
   }
 
   double refractor() {
-    String currentItem = "";
+    String item = "";
     oprStk.clear();
     opnStk.clear();
     rstStk.clear();
     for (i = 0; i < cstStk.length; i++) {
-      currentItem = cstStk[i];
+      item = cstStk[i];
 
-      if (oprs.contains(currentItem)) {
-        while (oprStk.isNotEmpty && highP(currentItem, oprStk.last)) {
+      if (oprs.contains(item)) {
+        while (oprStk.isNotEmpty && highP(item, oprStk.last)) {
           opnStk.add(oprStk.last);
           oprStk.removeLast();
         }
-        oprStk.add(currentItem);
+        oprStk.add(item);
       } else
-        opnStk.add(currentItem);
+        opnStk.add(item);
     }
     while (oprStk.isNotEmpty) {
       opnStk.add(oprStk.last);
       oprStk.removeLast();
     }
     for (i = 0; i < opnStk.length; i++) {
-      currentItem = opnStk[i];
+      item = opnStk[i];
 
-      if (oprs.contains(currentItem))
-        doOperation(currentItem);
+      if (oprs.contains(item))
+        doOperation(item);
       else
-        rstStk.add(double.parse(currentItem));
+        rstStk.add(double.parse(item));
     }
     if (rstStk.length == 0)
       return 0;
