@@ -165,7 +165,7 @@ class CustomStk {
     else return 1;
   }
 
-  doOperation(oprsymbol) {
+  doOperation(symbol) {
     double num1, num2;
 
     if (rstStk.length == 1) return rstStk[0];
@@ -173,22 +173,10 @@ class CustomStk {
     rstStk.removeLast();
     num2 = rstStk.last;
     rstStk.removeLast();
-    switch (oprsymbol) {
-      case "+":
-        rstStk.add(num1 + num2);
-        break;
-      case "-":
-        rstStk.add(num2 - num1);
-        break;
-      case "*":
-        rstStk.add(num1 * num2);
-        break;
-      case "/":
-        rstStk.add(num2 / num1);
-        break;
-      default:
-        break;
-    }
+    if (symbol == "+") rstStk.add(num1 + num2);
+    else if (symbol =="-") rstStk.add(num2 - num1);
+    else if (symbol == "*") rstStk.add(num1 * num2);
+    else rstStk.add(num2 / num1);
   }
 
   pop() {
