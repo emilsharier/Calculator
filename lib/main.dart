@@ -149,15 +149,11 @@ class CustomStk {
     }
     for (i = 0; i < opnStk.length; i++) {
       item = opnStk[i];
-      if (oprs.contains(item))
-        doOperation(item);
-      else
-        rstStk.add(double.parse(item));
+      if (oprs.contains(item)) doOperation(item);
+      else rstStk.add(double.parse(item));
     }
-    if (rstStk.isEmpty)
-      return 0;
-    else
-      return rstStk[0];
+    if (rstStk.isEmpty) return 0;
+    else return rstStk[0];
   }
 
   bool highP(item, topOfStk) {
