@@ -88,28 +88,25 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                 children: <Widget>[
                   Expanded(
                     child: Row(
-                        children: List.generate(4, (index) {
-                      return _buildButton(index, 0);
-                    })),
+                        children: List.generate(
+                            4, (index) => _buildButton(index, 0))),
                   ),
                   Expanded(
                     child: Row(
-                      children: List.generate(4, (index) {
-                        return _buildButton(index, 4);
-                      }),
+                      children:
+                          List.generate(4, (index) => _buildButton(index, 4)),
                     ),
                   ),
                   Expanded(
                     child: Row(
-                      children: List.generate(4, (index) {
-                        return _buildButton(index, 8);
-                      }),
+                      children:
+                          List.generate(4, (index) => _buildButton(index, 8)),
                     ),
                   ),
                   Expanded(
                     child: Row(
-                      children: List.generate(4,
-                          (index) => _buildButton(index, 12)),
+                      children:
+                          List.generate(4, (index) => _buildButton(index, 12)),
                     ),
                   ),
                   Expanded(
