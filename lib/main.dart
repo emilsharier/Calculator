@@ -180,7 +180,7 @@ class CustomStk {
       else
         rstStk.add(double.parse(item));
     }
-    if (rstStk.length == 0)
+    if (rstStk.isEmpty)
       return 0;
     else
       return rstStk[0];
