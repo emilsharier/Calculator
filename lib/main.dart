@@ -24,10 +24,12 @@ class _CalculatorBodyState extends State<CalculatorBody> {
     "8",
     "9",
     "*",
-    "<-",
+    "C",
     "0",
     ".",
-    "/"
+    "/",
+    "AC",
+    "=",
   ];
 
   String num2 = "";
@@ -87,35 +89,34 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                   Expanded(
                     child: Row(
                         children: List.generate(4, (index) {
-                      return _buildButton(contentOfButton[index]);
+                      return _buildButton(index, 0);
                     })),
                   ),
                   Expanded(
                     child: Row(
                       children: List.generate(4, (index) {
-                        return _buildButton(contentOfButton[index + 4]);
+                        return _buildButton(index, 4);
                       }),
                     ),
                   ),
                   Expanded(
                     child: Row(
                       children: List.generate(4, (index) {
-                        return _buildButton(contentOfButton[index + 8]);
+                        return _buildButton(index, 8);
                       }),
                     ),
                   ),
                   Expanded(
                     child: Row(
-                      children: List.generate(4, (index) {
-                        return _buildButton(contentOfButton[index + 12]);
-                      }),
+                      children: List.generate(4,
+                          (index) => _buildButton(index, 12)),
                     ),
                   ),
                   Expanded(
                     child: Row(
                       children: <Widget>[
-                        _buildButton("CLEAR"),
-                        _buildButton("=")
+                        _buildButton(16, 0),
+                        _buildButton(17, 0)
                       ],
                     ),
                   )
@@ -128,7 +129,8 @@ class _CalculatorBodyState extends State<CalculatorBody> {
     );
   }
 
-  _buildButton(String text) {
+  _buildButton(int index, int count) {
+    String text = contentOfButton[index + count];
     return Expanded(
       child: SizedBox.expand(
         child: OutlineButton(
@@ -138,10 +140,10 @@ class _CalculatorBodyState extends State<CalculatorBody> {
           ),
           onPressed: () {
             setState(() {
-              if (text == "<-") {
+              if (text == "C") {
                 object.num1 = "";
                 result = object.pop();
-              } else if (text == "CLEAR") {
+              } else if (text == "AC") {
                 result = object.clear();
               } else if (text == "=") {
                 result = object.equalToFunction();
