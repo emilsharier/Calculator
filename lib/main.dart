@@ -135,6 +135,8 @@ class CustomStack {
   int i;
 
   List<String> operators = ["+", "*", "-", "/"];
+  List<String> numbers =
+      List.generate(11, (number) => (number == 10) ? "." : number.toString());
 
   List<String> customStack = [];
   List<String> operationStack = [];
@@ -142,38 +144,15 @@ class CustomStack {
   List<double> resultStack = [];
 
   double push(String item) {
-    switch (item) {
-      case "1":
-      case "2":
-      case "3":
-      case "4":
-      case "5":
-      case "6":
-      case "7":
-      case "8":
-      case "9":
-      case "0":
-      case ".":
-        num1 += item;
-        if (customStack.length != 0 &&
-            customStack.last != "*" &&
-            customStack.last != "-" &&
-            customStack.last != "+" &&
-            customStack.last != "/") {
-          customStack.removeLast();
-        }
-        customStack.add(num1);
-
-        break;
-      case "+":
-      case "-":
-      case "*":
-      case "/":
-        (customStack.isEmpty) ? customStack.add("0") : 0;
-
-        customStack.add(item);
-        num1 = "";
-        break;
+    if (operators.contains(item)) {
+      (customStack.isEmpty) ? customStack.add("0") : 0;
+      customStack.add(item);
+      num1 = "";
+    } else if (numbers.contains(item)) {
+      num1 += item;
+      if (customStack.isNotEmpty && !operators.contains(customStack.last))
+        customStack.removeLast();
+      customStack.add(num1);
     }
     result = refractor();
     return result;
