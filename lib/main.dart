@@ -32,20 +32,8 @@ class _CalculatorState extends State<Calculator> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
-                      result.toString(),
-                      style: TextStyle(
-                        fontSize: 45.0,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      obj.getExpr(),
-                      style: TextStyle(
-                        fontSize: 30.0,
-                        color: Colors.grey,
-                      ),
-                    ),
+                    _buildText(result.toString(), 45.0, Colors.white),
+                    _buildText(obj.getExpr(), 30.0, Colors.white24),
                   ],
                 ),
               ),
@@ -56,6 +44,16 @@ class _CalculatorState extends State<Calculator> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  _buildText(text, size, color) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: size,
+        color: color,
       ),
     );
   }
@@ -106,7 +104,7 @@ class CustomStk {
   String num1 = "";
   double result = 0;
   int i;
-  List oprs = ["+", "*", "-", "/"];
+  List oprs = ["+","*","-","/"];
   List nmbrs = List.generate(11, (number) => (number == 10) ? "." : number.toString());
   List cstStk = [];
   List opnStk = [];
