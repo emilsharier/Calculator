@@ -78,7 +78,6 @@ class _CalculatorState extends State<Calculator> {
           onPressed: () {
             setState(() {
               if (text == "C") {
-                obj.num1 = "";
                 result = obj.pop();
               } else if (text == "AC"){
                 obj.clear();
@@ -181,6 +180,7 @@ class CustomStk {
   }
 
   pop() {
+    num1 = "";
     if (cstStk.isNotEmpty) {
       String tmp = cstStk.last;
       if (tmp.length == 1) cstStk.removeLast();
