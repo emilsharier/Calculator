@@ -9,24 +9,7 @@ class Calculator extends StatefulWidget {
 
 class _CalculatorState extends State<Calculator> {
   final List content = [
-    "1",
-    "2",
-    "3",
-    "+",
-    "4",
-    "5",
-    "6",
-    "-",
-    "7",
-    "8",
-    "9",
-    "*",
-    "C",
-    "0",
-    ".",
-    "/",
-    "AC",
-    "=",
+    "1","2","3","+","4","5","6","-","7","8","9","*","C","0",".","/","AC","=",
   ];
 
   double result = 0;
