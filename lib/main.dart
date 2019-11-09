@@ -75,10 +75,7 @@ class _CalculatorState extends State<Calculator> {
     return Expanded(
       child: SizedBox.expand(
         child: OutlineButton(
-          child: Text(
-            text,
-            style: TextStyle(fontSize: 25.0),
-          ),
+          child: _buildText(text, 27.0, Colors.blueGrey),
           onPressed: () {
             setState(() {
               if (text == "C") {
