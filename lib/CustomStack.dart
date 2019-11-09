@@ -51,9 +51,6 @@ class CustomStack {
 
         break;
     }
-    print("Custom Stack .....");
-    print(customStack);
-
     result = refractor();
     return result;
   }
@@ -85,13 +82,8 @@ class CustomStack {
     print(operatorStack);
     while (operatorStack.isNotEmpty) {
       operationStack.add(operatorStack.last);
-      print("Adding " + operatorStack.last);
       operatorStack.removeLast();
     }
-
-    print("Operation stack ....");
-    print(operationStack);
-
     for (i = 0; i < operationStack.length; i++) {
       currentItem = operationStack[i];
 
@@ -182,9 +174,7 @@ class CustomStack {
   }
 
   pop() {
-    if (customStack.length == 0) {
-      print("Stack is empty!");
-    } else {
+    if (customStack.length != 0) {
       String tempString = customStack.last;
       if (tempString.length == 1) {
         customStack.removeLast();
@@ -193,16 +183,10 @@ class CustomStack {
         customStack.removeLast();
         customStack.add(tempString);
       }
-      print("Popped from Stack!");
     }
-    _viewCurrentStack();
-
     return refractor();
   }
 
-  _viewCurrentStack() {
-    print(customStack);
-  }
 
   getNum() {
     for (int i = 0; i < customStack.length; i++) {
@@ -234,7 +218,6 @@ class CustomStack {
     for (i = 0; i < customStack.length; i++) {
       temp += customStack[i];
     }
-
     return temp;
   }
 }
