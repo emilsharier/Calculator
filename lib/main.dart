@@ -108,13 +108,13 @@ class CustomStk {
   List oprStk = [];
   List<double> rstStk = [];
 
-  double push(item) {
-    if (oprs.contains(item)) {
+  double push(t) {
+    if (oprs.contains(t)) {
       (cstStk.isEmpty) ? cstStk.add("0") : 0;
-      cstStk.add(item);
+      cstStk.add(t);
       num1 = "";
-    } else if (nmbrs.contains(item)) {
-      num1 += item;
+    } else if (nmbrs.contains(t)) {
+      num1 += t;
       if (cstStk.isNotEmpty && !oprs.contains(cstStk.last)) cstStk.removeLast();
       cstStk.add(num1);
     }
@@ -123,45 +123,45 @@ class CustomStk {
   }
 
   double recalc() {
-    String item = "";
+    String t = "";
     oprStk.clear();
     opnStk.clear();
     rstStk.clear();
     for (i = 0; i < cstStk.length; i++) {
-      item = cstStk[i];
-      if (oprs.contains(item)) {
-        while (oprStk.isNotEmpty && highP(item, oprStk.last)) {
+      t = cstStk[i];
+      if (oprs.contains(t)) {
+        while (oprStk.isNotEmpty && highP(t, oprStk.last)) {
           opnStk.add(oprStk.last);
           oprStk.removeLast();
         }
-        oprStk.add(item);
+        oprStk.add(t);
       } else
-        opnStk.add(item);
+        opnStk.add(t);
     }
     while (oprStk.isNotEmpty) {
       opnStk.add(oprStk.last);
       oprStk.removeLast();
     }
     for (i = 0; i < opnStk.length; i++) {
-      item = opnStk[i];
-      if (oprs.contains(item)) doOp(item);
-      else rstStk.add(double.parse(item));
+      t = opnStk[i];
+      if (oprs.contains(t)) doOp(t);
+      else rstStk.add(double.parse(t));
     }
     if (rstStk.isEmpty) return 0;
     else return rstStk[0];
   }
 
-  bool highP(item, topOfStk) {
-    int currentP = getP(item);
+  bool highP(t, topOfStk) {
+    int currentP = getP(t);
     int tosP = getP(topOfStk);
 
-    if (item == topOfStk) return false;
+    if (t == topOfStk) return false;
     if (tosP >= currentP) return true;
     else return false;
   }
 
-  int getP(item) {
-    if (item == "*" || item == "/") return 2;
+  int getP(t) {
+    if (t == "*" || t == "/") return 2;
     else return 1;
   }
 
