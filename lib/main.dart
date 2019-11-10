@@ -106,7 +106,7 @@ class CustomStk {
   List cstStk = [];
   List opnStk = [];
   List oprStk = [];
-  List<double> rstStk = [];
+  List rstStk = [];
 
   double push(t) {
     if (oprs.contains(t)) {
