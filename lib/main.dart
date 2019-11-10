@@ -102,7 +102,7 @@ class CustomStk {
   double result = 0;
   int i;
   List oprs = ["+","*","-","/"];
-  List nmbrs = List.generate(11, (number) => (number == 10) ? "." : number.toString());
+  List nmbrs = List.generate(11, (n) => (n == 10) ? "." : n.toString());
   List cstStk = [];
   List opnStk = [];
   List oprStk = [];
