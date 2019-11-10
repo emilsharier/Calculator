@@ -144,7 +144,7 @@ class CustomStk {
     }
     for (i = 0; i < opnStk.length; i++) {
       item = opnStk[i];
-      if (oprs.contains(item)) doOperation(item);
+      if (oprs.contains(item)) doOp(item);
       else rstStk.add(double.parse(item));
     }
     if (rstStk.isEmpty) return 0;
@@ -165,7 +165,7 @@ class CustomStk {
     else return 1;
   }
 
-  doOperation(symbol) {
+  doOp(symbol) {
     double num1, num2;
 
     if (rstStk.length == 1) return rstStk[0];
